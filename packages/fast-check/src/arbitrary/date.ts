@@ -55,8 +55,8 @@ export function date(constraints: DateConstraints = {}): Arbitrary<Date> {
   if (noInvalidDate) {
     return integer({ min: intMin, max: intMax }).map(timeToDateMapper, timeToDateUnmapper);
   }
-  const valueForNaN = intMax + 1;
-  return integer({ min: intMin, max: intMax + 1 }).map(
+  const valueForNaN = intMax;
+  return integer({ min: intMin, max: intMax }).map(
     timeToDateMapperWithNaN(valueForNaN),
     timeToDateUnmapperWithNaN(valueForNaN),
   );
